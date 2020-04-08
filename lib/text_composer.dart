@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+
+class TextComposer extends StatefulWidget {
+
+  @override
+  _TextComposerState createState() => _TextComposerState();
+}
+
+class _TextComposerState extends State<TextComposer> {
+
+  bool _isComposing = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      child: Row(
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.photo_camera, color: Colors.black38),
+            onPressed: () {
+
+            },
+          ),
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration.collapsed(
+                  hintText: 'Enviar uma mensagem'),
+              onChanged: (text) {
+                setState(() {
+                  _isComposing = text.isNotEmpty;
+                });
+
+              },
+              onSubmitted: (text) {
+
+              },
+            ),
+          ),
+          IconButton(
+              icon: Icon(Icons.send, color: Colors.teal,),
+              onPressed: _isComposing ?() {
+
+              } : null,
+          ),
+        ],
+      ),
+    );
+  }
+}
